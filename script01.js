@@ -1,3 +1,4 @@
+/****** ViaCEP *********/
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
     document.getElementById('rua').value=("");
@@ -77,4 +78,26 @@ document.getElementById('formulario').addEventListener('submit', function(e) {
     } else {
         alert('Por favor, preencha todos os campos.');
     }
+});
+
+/******** JsonPlaceholder *******/
+const userList = document.getElementById('user-list');
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(users => {
+    users.forEach(user => {
+      const card = document.createElement('div');
+      card.className = 'user-card';
+      card.innerHTML = `
+        <h3>${user.name}</h3>
+        <p><strong>Email:</strong> ${user.email}</p>
+        <p><strong>Cidade:</strong> ${user.address.city}</p>
+      `;
+      userList.appendChild(card);
+    });
+  })
+  .catch(error => {
+    userList.innerHTML = `<p>Erro ao carregar usuários.</p>`;
+    console.error('Erro:', error);
 });

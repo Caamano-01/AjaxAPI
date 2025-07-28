@@ -5,6 +5,7 @@ body {
     padding: 0;
 }
 
+/* Estilo CEP */
 .container {
     background: #fff;
     max-width: 500px;
@@ -58,4 +59,50 @@ button {
 
 button:hover {
     background-color: #014001;
+}
+
+/* Estilos adicionados para a lista de usuários */
+
+.user-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.user-card {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    width: 260px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #015a01;
+}
+
+.user-card p {
+    margin: 4px 0;
+    color: #555;
+    font-size: 14px;
 }
