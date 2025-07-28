@@ -106,3 +106,59 @@ button:hover {
     color: #555;
     font-size: 14px;
 }
+
+/* Estilo Cats & Dogs */
+.user-section,
+.api-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-list,
+.cats-dogs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.user-card,
+.animal-card {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    width: 260px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-card:hover,
+.animal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-card h3,
+.animal-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #015a01;
+}
+
+.user-card p,
+.animal-card p {
+    margin: 4px 0;
+    color: #555;
+    font-size: 14px;
+}
+.animal-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}

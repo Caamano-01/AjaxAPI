@@ -101,3 +101,41 @@ fetch('https://jsonplaceholder.typicode.com/users')
     userList.innerHTML = `<p>Erro ao carregar usuários.</p>`;
     console.error('Erro:', error);
 });
+
+/* Cats & Dogs */
+const catsDogsDiv = document.getElementById('cats-dogs');
+
+async function fetchCat() {
+  const res = await fetch('https://api.thecatapi.com/v1/images/search');
+  const data = await res.json();
+  return data[0];
+}
+
+async function fetchDog() {
+  const res = await fetch('https://api.thedogapi.com/v1/images/search');
+  const data = await res.json();
+  return data[0];
+}
+
+async function showCatsDogs() {
+  try {
+    // Buscando 2 gatos e 2 cachorros (total 4 cards)
+    const promises = [fetchCat(), fetchCat(), fetchDog(), fetchDog()];
+    const animals = await Promise.all(promises);
+
+    animals.forEach(animal => {
+      const card = document.createElement('div');
+      card.className = 'animal-card';
+      let breedName = animal.breeds && animal.breeds.length > 0 ? animal.breeds[0].name : 'Raça desconhecida';
+      card.innerHTML = `
+        <img src="${animal.url}" alt="Imagem do animal" />
+        <h3>${breedName}</h3>
+      `;
+      catsDogsDiv.appendChild(card);
+    });
+  } catch(e) {
+    catsDogsDiv.innerHTML = '<p>Erro ao carregar imagens de gatos e cachorros.</p>';
+  }
+}
+
+showCatsDogs();
