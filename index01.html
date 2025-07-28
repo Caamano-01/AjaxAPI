@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <h2>Consulta de Endereço por CEP</h2>
+        <form method="get" action="." id="formulario">
+            <label for="cep">CEP:
+                <input name="cep" type="text" id="cep" maxlength="9" onblur="pesquisacep(this.value);" />
+            </label>
+            <button type="button" onclick="pesquisacep()">Buscar CEP</button>
+
+            <label for="rua">Rua:
+                <input name="rua" type="text" id="rua" />
+            </label>
+
+            <label for="bairro">Bairro:
+                <input name="bairro" type="text" id="bairro" />
+            </label>
+
+            <label for="cidade">Cidade:
+                <input name="cidade" type="text" id="cidade" />
+            </label>
+
+            <label for="uf">Estado:
+                <input name="uf" type="text" id="uf" />
+            </label>
+
+            <label for="ibge">IBGE:
+                <input name="ibge" type="text" id="ibge" />
+            </label>
+
+            <button type="submit">enviar</button>
+            <div class="mensagem" id="mensagem"></div>
+        </form>
+    </div>
+
+    <script src="script01.js"></script>
+</body>
+</html>
