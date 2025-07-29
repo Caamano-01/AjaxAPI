@@ -166,6 +166,30 @@ async function fetchAdvice() {
 
 fetchAdvice();
 
+/* CoinGecko */
+async function fetchBitcoinPrice() {
+  const priceEl = document.getElementById('btc-price');
+  const errorEl = document.getElementById('error-msg');
+  errorEl.textContent = '';
+  priceEl.textContent = 'Carregando...';
+
+  try {
+    // Usando a API da CoinGecko para o preço do Bitcoin em USD
+    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+    if (!response.ok) throw new Error('Erro na resposta da API da CoinGecko');
+    const data = await response.json();
+    const priceUSD = data.bitcoin.usd;
+    priceEl.textContent = `USD $${priceUSD}`;
+  } catch (error) {
+    priceEl.textContent = '—';
+    errorEl.textContent = 'Erro ao carregar o preço do Bitcoin (CoinGecko). Tente novamente.';
+    console.error(error);
+  }
+}
+document.getElementById('refresh-btn').addEventListener('click', fetchBitcoinPrice);
+// Busca o preço assim que a página carrega
+fetchBitcoinPrice();
+
 /*** Agify.io ****/
 const agifyForm = document.getElementById('agifyForm');
 const nameInput = document.getElementById('nameInput');
@@ -190,3 +214,54 @@ agifyForm.addEventListener('submit', async e => {
     agifyResult.textContent = 'Erro ao consultar a API.';
   }
 });
+
+/* OpenWeatherMap */
+async function fetchWeather() {
+  const apiKey = 'da19a2952fc6812358d9b16f2eb952c1';
+  const city = 'Porto Alegre,BR';
+  try {
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&lang=pt&appid=${apiKey}`);
+    const data = await res.json();
+
+    if (parseInt(data.cod) === 200) {
+      const el = document.createElement('div');
+      el.className = 'weather-card';
+      el.innerHTML = `
+        <h3>${data.name}</h3>
+        <p>${data.weather[0].description}</p>
+        <p>${data.main.temp} °C</p>`;
+      document.getElementById('weatherContainer').appendChild(el);
+    } else {
+      document.getElementById('weatherContainer').textContent = 'Não foi possível carregar o clima.';
+    }
+  } catch (error) {
+    console.error('Erro ao buscar o clima:', error);
+    document.getElementById('weatherContainer').textContent = 'Erro ao consultar o tempo.';
+  }
+}
+
+fetchWeather();
+
+/* Bored API */
+async function fetchBored() {
+  try {
+    const res = await fetch('https://bored-api.appbrewery.com/random');
+    const data = await res.json();
+    document.getElementById('boredActivity').innerHTML = `<h3>Atividade sugerida:</h3><p>${data.activity}</p>`;
+  } catch (error) {
+    console.error('Erro ao buscar atividade:', error);
+    document.getElementById('boredActivity').textContent = 'Erro ao buscar sugestão (Bored API).';
+  }
+}
+
+/* Ipify */
+async function fetchIp() {
+  try {
+    const res = await fetch('https://api.ipify.org?format=json');
+    const data = await res.json();
+    document.getElementById('ipContainer').innerHTML = `<h3>Seu IP é:</h3><p>${data.ip}</p>`;
+  } catch {
+    document.getElementById('ipContainer').textContent = 'Erro ao obter IP.';
+  }
+}
+fetchIp();

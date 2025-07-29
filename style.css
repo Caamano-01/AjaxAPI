@@ -6,7 +6,7 @@ body {
 }
 
 /* Estilo CEP */
-.container {
+.cep-container {
     background: #fff;
     max-width: 500px;
     margin: 40px auto;
@@ -203,4 +203,18 @@ button:hover {
     margin-top: 10px;
     font-weight: bold;
     color: #015a01;
+}
+
+.weather-card, .bored-card, .ip-card { 
+    background:#f9f9f9;
+    padding:15px;
+    border-radius:8px;
+    width:260px;
+    margin:10px auto;
+    text-align:center; 
+}
+ 
+.weather-card h3, .bored-card h3, .ip-card h3 {
+    color:#015a01; 
+    margin-bottom:10px; 
 }

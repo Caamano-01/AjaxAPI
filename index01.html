@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="container">
+    <div class="api-section">
         <h2>Consulta de Endereço por CEP</h2>
         <form method="get" action="." id="formulario">
             <label for="cep">CEP:
                 <input name="cep" type="text" id="cep" maxlength="9" onblur="pesquisacep(this.value);" />
             </label>
-            <button type="button" onclick="pesquisacep()">Buscar CEP</button>
+            <button type="button" onclick="pesquisacep(document.getElementById('cep').value)">Buscar CEP</button>
 
             <label for="rua">Rua:
                 <input name="rua" type="text" id="rua" />
@@ -42,7 +42,7 @@
     </div>
 
     <!-- Seção de usuários -->
-    <div class="container">
+    <div class="api-section">
         <h2>Lista de Usuários (JSONPlaceholder)</h2>
         <div id="user-list" class="user-list"></div>
     </div>
@@ -59,6 +59,14 @@
         <ul id="advice-list" class="advice-list"></ul>
     </div>
 
+    <!-- Coin desk-->
+    <div class="api-section">
+        <h1>Preço Atual do Bitcoin</h1>
+        <div class="price" id="btc-price">Carregando...</div>
+        <button id="refresh-btn">Atualizar preço</button>
+        <div class="error" id="error-msg"></div>
+    </div>
+
     <!-- Agify -->
     <div class="api-section">
         <h2>Previsão de Idade por Nome</h2>
@@ -67,6 +75,24 @@
             <button type="submit">Consultar</button>
         </form>
         <div id="agifyResult"></div>
+    </div>
+
+    <!-- Previsão do tempo (OpenWeatherMap) -->
+    <div class="api-section">
+        <h2>Previsão do Tempo</h2>
+        <div id="weatherContainer"></div>
+    </div>
+
+    <!-- Sugestão de atividade (Bored API) -->
+    <div class="api-section">
+        <h2>Sugestão de Atividade</h2>
+        <div id="boredActivity" class="bored-card"></div>
+    </div>
+
+    <!-- IP público (Ipify) -->
+    <div class="api-section">
+        <h2>Seu IP Público</h2>
+        <div id="ipContainer" class="ip-card"></div>
     </div>
 
     <script src="script01.js"></script>
