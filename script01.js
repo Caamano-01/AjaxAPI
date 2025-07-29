@@ -139,3 +139,29 @@ async function showCatsDogs() {
 }
 
 showCatsDogs();
+
+/*** Advice Slip API (4 frases) ****/
+const adviceList = document.getElementById('advice-list');
+
+async function fetchAdvice() {
+  const advices = [];
+
+  for(let i = 0; i < 4; i++) {
+    try {
+      const res = await fetch('https://api.adviceslip.com/advice');
+      const data = await res.json();
+      advices.push(data.slip.advice);
+    } catch {
+      advices.push("Não foi possível carregar o conselho.");
+    }
+  }
+
+  adviceList.innerHTML = '';
+  advices.forEach(text => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    adviceList.appendChild(li);
+  });
+}
+
+fetchAdvice();

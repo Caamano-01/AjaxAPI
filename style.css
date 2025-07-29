@@ -162,3 +162,21 @@ button:hover {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
+/* Advice */
+.advice-list {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.advice-list li {
+    background: #e1f7e7;
+    margin-bottom: 12px;
+    padding: 12px 20px;
+    border-left: 6px solid #015a01;
+    border-radius: 6px;
+    font-style: italic;
+    color: #015a01;
+}
