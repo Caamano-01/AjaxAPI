@@ -165,3 +165,28 @@ async function fetchAdvice() {
 }
 
 fetchAdvice();
+
+/*** Agify.io ****/
+const agifyForm = document.getElementById('agifyForm');
+const nameInput = document.getElementById('nameInput');
+const agifyResult = document.getElementById('agifyResult');
+
+agifyForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = nameInput.value.trim();
+  if (!name) return;
+
+  agifyResult.textContent = 'Carregando...';
+
+  try {
+    const res = await fetch(`https://api.agify.io/?name=${name}`);
+    const data = await res.json();
+    if (data.age) {
+      agifyResult.textContent = `A idade média para o nome "${name}" é ${data.age} anos.`;
+    } else {
+      agifyResult.textContent = `Não foi possível prever a idade para o nome "${name}".`;
+    }
+  } catch {
+    agifyResult.textContent = 'Erro ao consultar a API.';
+  }
+});

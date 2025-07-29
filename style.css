@@ -180,3 +180,27 @@ button:hover {
     font-style: italic;
     color: #015a01;
 }
+
+/* Agify form */
+#agifyForm {
+    max-width: 300px;
+    margin: 20px auto 0;
+}
+
+#agifyForm input[type="text"] {
+    width: calc(100% - 110px);
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#agifyForm button {
+    width: 90px;
+    display: inline-block;
+}
+
+#agifyResult {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #015a01;
+}
